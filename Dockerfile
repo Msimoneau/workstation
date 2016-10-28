@@ -4,6 +4,8 @@ FROM ubuntu:16.04
 
 MAINTAINER Martin Simoneau "martin1.simoneau@gmail.com"
 
+USER root
+
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set Timezone
@@ -35,7 +37,7 @@ RUN apt-get install -y software-properties-common && \
    gem install sass
 
 # Install nodejs 4.6 (https://nodejs.org/en/download/package-manager/)
-RUN curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_4.x |  -E bash -
 RUN apt-get install -y nodejs
 RUN update-alternatives --install "/usr/bin/node" "node" "/usr/bin/nodejs" 1
 
