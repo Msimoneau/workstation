@@ -57,7 +57,3 @@ ENV HOME /home/${user}
 VOLUME ["/home/${user}"]
 
 USER ${user}
-
-# Build the image for user Bill.
-# docker build --force-rm=true -t base-dev --build-arg user="bill" -f Dockerfile-base .
-#
