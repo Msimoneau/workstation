@@ -25,8 +25,8 @@ RUN apt-get update -y && \
     apt-get install -y openssh-server && \
     apt-get install -y git build-essential && \
     apt-get install -y openssl libssl-dev && \
-    apt-get install -y wget curl tcpdump zip unzip && \
-    apt-get install -y libfontconfig1
+    apt-get install -y wget curl tcpdump  && \
+    apt-get install -y libfontconfig1 && \ # Requirement for phantomJS fonts.
     apt-get autoclean
 
 # Install Ruby 2.3 and sass
@@ -37,7 +37,7 @@ RUN apt-get install -y software-properties-common && \
    gem install sass
 
 # Install nodejs 4.6 (https://nodejs.org/en/download/package-manager/)
-RUN curl -sL https://deb.nodesource.com/setup_4.x |  -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_4.x | -E bash -
 RUN apt-get install -y nodejs
 RUN update-alternatives --install "/usr/bin/node" "node" "/usr/bin/nodejs" 1
 
