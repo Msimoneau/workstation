@@ -17,6 +17,7 @@ RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen en_US.UTF-8 && \
     dpkg-reconfigure locales && \
     /usr/sbin/update-locale LANG=en_US.UTF-8
+
 ENV LC_ALL en_US.UTF-8
 
 # Install utils.
@@ -25,19 +26,18 @@ RUN apt-get update -y && \
     apt-get install -y openssh-server && \
     apt-get install -y git build-essential && \
     apt-get install -y openssl libssl-dev && \
-    apt-get install -y wget curl tcpdump  && \
-    apt-get install -y libfontconfig1 && \ # Requirement for phantomJS fonts.
+    apt-get install -y wget curl tcpdump zip unzip libfontconfig1-dev && \
     apt-get autoclean
 
 # Install Ruby 2.3 and sass
 RUN apt-get install -y software-properties-common && \
-   apt-add-repository ppa:brightbox/ruby-ng && \
-   apt-get update && \
-   apt-get install -y ruby2.3 && \
-   gem install sass
+    apt-add-repository ppa:brightbox/ruby-ng && \
+    apt-get update && \
+    apt-get install -y ruby2.3 && \
+    gem install sass
 
 # Install nodejs 4.6 (https://nodejs.org/en/download/package-manager/)
-RUN curl -sL https://deb.nodesource.com/setup_4.x | -E bash -
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
 RUN apt-get install -y nodejs
 RUN update-alternatives --install "/usr/bin/node" "node" "/usr/bin/nodejs" 1
 
