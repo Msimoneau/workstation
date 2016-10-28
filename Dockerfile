@@ -1,6 +1,6 @@
 # Ubuntu workstation.
 
-FROM ubuntu:14.04
+FROM ubuntu:16.04
 
 MAINTAINER Martin Simoneau "martin1.simoneau@gmail.com"
 
@@ -43,7 +43,8 @@ RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - &&\
 
 # Bower and grunt.
 RUN npm install -g bower && \
-    npm install -g grunt
+    npm install -g grunt && \
+    npm install -g gulp-cli
 
 # Add a user.
 ARG user=admin
