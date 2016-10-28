@@ -26,7 +26,7 @@ RUN apt-get update -y && \
     apt-get install -y git build-essential && \
     apt-get install -y openssl libssl-dev && \
     apt-get install -y wget curl tcpdump zip unzip && \
-    apt-get install -y libfontconfig1 # Requirement for phantomJS fonts.
+    apt-get install -y libfontconfig1
     apt-get autoclean
 
 # Install Ruby 2.3 and sass
