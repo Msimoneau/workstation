@@ -37,9 +37,9 @@ RUN apt-get install -y software-properties-common && \
     gem install sass
 
 # Install nodejs 4.6 (https://nodejs.org/en/download/package-manager/)
-RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -
-RUN apt-get install -y nodejs
-RUN update-alternatives --install "/usr/bin/node" "node" "/usr/bin/nodejs" 1
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash - &&\
+    apt-get install -y nodejs &&\
+    update-alternatives --install "/usr/bin/node" "node" "/usr/bin/nodejs" 1
 
 # Bower and grunt.
 RUN npm install -g bower && \
