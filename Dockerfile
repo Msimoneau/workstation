@@ -26,7 +26,7 @@ RUN apt-get update -y && \
     apt-get install -y openssh-server && \
     apt-get install -y git build-essential && \
     apt-get install -y openssl libssl-dev && \
-    apt-get install -y wget curl tcpdump zip unzip libfontconfig1-dev && \
+    apt-get install -y wget curl tcpdump zip unzip libfontconfig1-dev python && \
     apt-get autoclean
 
 # Install Ruby 2.3 and sass
