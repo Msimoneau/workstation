@@ -4,8 +4,6 @@ FROM ubuntu:16.04
 
 MAINTAINER Martin Simoneau "martin1.simoneau@gmail.com"
 
-USER root
-
 ENV DEBIAN_FRONTEND noninteractive
 
 # Set Timezone
@@ -53,8 +51,8 @@ RUN adduser --disabled-password --gecos '' ${user} && \
     echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers && \
     usermod -s /bin/bash ${user}
 
-WORKDIR /home/${user}
 ENV HOME /home/${user}
-VOLUME ["/home/${user}"]
+WORKDIR {HOME}
+VOLUME ["${HOME}"]
 
 USER ${user}
