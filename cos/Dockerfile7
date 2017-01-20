@@ -1,0 +1,35 @@
+FROM centos:7
+
+MAINTAINER Martin Simoneau <martin1.simoneau@gmail.com>
+
+ENV NODEJS_VERSION=v4.5.0
+
+ENV PATH=/apps/node/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/bin
+
+RUN yum -y install make gcc gcc-c++ && \
+    yum -y install ruby && \
+    yum -y install git && \
+    yum -y clean all
+
+RUN gem install sass
+
+RUN mkdir /apps && \
+    cd /apps && \
+    curl -s -L -O https://nodejs.org/dist/${NODEJS_VERSION}/node-${NODEJS_VERSION}-linux-x64.tar.xz && tar xf node-${NODEJS_VERSION}-linux-x64.tar.xz && \
+    mv node-${NODEJS_VERSION}-linux-x64 node
+
+# Bower and grunt.
+RUN npm install -g bower && \
+    npm install -g grunt && \
+    npm install -g gulp-cli
+
+# Add a user.
+ARG user=admin
+RUN adduser  -m ${user} #&& \
+    usermod -aG wheel ${user}
+
+WORKDIR /home/${user}
+ENV HOME /home/${user}
+VOLUME ["/home/${user}"]
+
+USER ${user}
