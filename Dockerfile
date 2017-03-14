@@ -43,7 +43,7 @@ RUN curl -sL https://deb.nodesource.com/setup_6.x | bash - &&\
 RUN npm install -g bower && \
     npm install -g grunt && \
     npm install -g gulp-cli && \
-    npm install -g angular-cli
+    npm install -g @angular/cli
 
 # Add a user.
 ARG user=admin
